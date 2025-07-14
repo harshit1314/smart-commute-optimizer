@@ -29,4 +29,5 @@
 | Background Tasks API | Handle computations |
 | Intersection Observer API | Lazy-load content |
 
+➡️ Site is live at: https://harshit1314.github.io/smart-commute-optimizer/
 
