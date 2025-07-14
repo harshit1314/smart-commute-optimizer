@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Commute Optimizer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1><i class="fas fa-route"></i> Smart Commute Optimizer</h1>
+        <div id="current-time"></div>
+    </header>
+    
+    <div class="dashboard">
+        <div class="left-panel">
+            <div class="panel connection-panel">
+                <h2><i class="fas fa-network-wired"></i> Connection Status</h2>
+                <div class="connection-status" id="connectionStatus">
+                    <i class="fas fa-circle-notch fa-spin"></i> Checking your network connection...
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar" id="networkQualityBar"></div>
+                </div>
+                <div id="networkDetails">
+                    <p><strong>Connection type:</strong> <span id="connectionType">Detecting...</span></p>
+                    <p><strong>Download speed:</strong> <span id="downloadSpeed">Detecting...</span></p>
+                    <p><strong>Latency:</strong> <span id="latency">Detecting...</span></p>
+                </div>
+            </div>
+            
+            <div class="panel location-panel">
+                <h2><i class="fas fa-map-marker-alt"></i> Your Location</h2>
+                <div class="location-info">
+                    <i class="fas fa-location-arrow"></i>
+                    <div id="locationInfo">Detecting your location...</div>
+                </div>
+                
+                <div class="tab-container">
+                    <div class="tabs">
+                        <div class="tab active" data-tab="traffic">Traffic</div>
+                        <div class="tab" data-tab="weather">Weather</div>
+                        <div class="tab" data-tab="alt-routes">Alternatives</div>
+                    </div>
+                    
+                    <div class="tab-content active" id="traffic-tab">
+                        <div class="traffic-chart" id="trafficChart"></div>
+                        <p>Traffic patterns in your area</p>
+                    </div>
+                    
+                    <div class="tab-content" id="weather-tab">
+                        <div id="weatherInfo">
+                            <p>Loading weather data...</p>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="alt-routes-tab">
+                        <div id="altRoutesInfo">
+                            <p>Analyzing alternative routes...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="right-panel">
+            <div class="panel map-panel">
+                <h2><i class="fas fa-map"></i> Commute Map</h2>
+                <div id="map-container">
+                    <canvas id="map"></canvas>
+                    <div class="map-controls">
+                        <button class="map-control" id="zoomIn"><i class="fas fa-plus"></i></button>
+                        <button class="map-control" id="zoomOut"><i class="fas fa-minus"></i></button>
+                        <button class="map-control" id="locateMe"><i class="fas fa-crosshairs"></i></button>
+                    </div>
+                </div>
+                
+                <div class="controls">
+                    <div>
+                        <label for="departureTime">Departure time:</label>
+                        <input type="time" id="departureTime" value="08:00">
+                    </div>
+                    <button id="refreshBtn"><i class="fas fa-sync-alt"></i> Refresh</button>
+                </div>
+                
+                <input type="range" min="0" max="24" value="8" class="time-slider" id="timeSlider">
+                <div class="time-labels">
+                    <span>12AM</span>
+                    <span>6AM</span>
+                    <span>12PM</span>
+                    <span>6PM</span>
+                    <span>12AM</span>
+                </div>
+            </div>
+            
+            <div class="panel suggestions-panel">
+                <h2><i class="fas fa-lightbulb"></i> Smart Suggestions</h2>
+                <div id="suggestionsLoading" class="hidden">
+                    <p><i class="fas fa-circle-notch fa-spin"></i> Calculating optimal commute options...</p>
+                </div>
+                <div class="suggestions-grid" id="suggestionsContainer"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="notification" id="notification">
+        <i class="fas fa-bell"></i>
+        <div id="notificationMessage"></div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
